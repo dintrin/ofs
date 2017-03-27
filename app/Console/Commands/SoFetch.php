@@ -44,6 +44,7 @@
          */
         public function handle()
         {
+            ini_set('memory_limit', '-1');
             //confingure log
             Log::useDailyFiles(storage_path() . '/logs/navision-pull.log');
 

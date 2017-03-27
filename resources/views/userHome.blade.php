@@ -57,7 +57,7 @@
 <div>
 
 <ul >
-    <li><a>{{$username}}'s Home Page</a></li>
+    {{--<li><a>{{$username}}'s Home Page</a></li>--}}
     <li><a href="/logout">Logout</a></li>
     <li id="not"><a id="n">Notification count:<?php echo Notification::where('uid_target','=',$username)->where('status','=','un_read')->count() ?></a></li>
     <li><a >upload</a></li>
@@ -197,7 +197,7 @@
             userLists.sort('type', {order: "asc"});
             options.sort="asc";
         }
-        else { artisan ser
+        else {
             userLists.sort('type', {order: "desc"});
             options.sort = 'desc';
         }

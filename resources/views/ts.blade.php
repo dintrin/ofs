@@ -60,14 +60,14 @@
                   {{--</ul>--}}
                 </div>
                 <div class="dropdownManage"><a class="btn" href="javascript:void(0)"> <span>REPORTS</span></a></div>
-                <div class="dropdown"> <span class="counter">10</span> <a class="notifications dropdown-toggle"  data-toggle="dropdown">Notifications</a>
-                  <ul class="dropdown-menu customDropdownMenu">
-                    <li><a href="javascript:void(0)">#17 Hard Copy Requests</a></li>
-                    <li><a href="javascript:void(0)">Delivery Challan</a></li>
-                    <li><a href="javascript:void(0)">Purchase Order</a></li>
-                    <li><a href="javascript:void(0)" style="background-color: #efeeee;">View All</a></li>
-                  </ul>
-                </div>
+                {{--<div class="dropdown"> <span class="counter">10</span> <a class="notifications dropdown-toggle"  data-toggle="dropdown">Notifications</a>--}}
+                  {{--<ul class="dropdown-menu customDropdownMenu">--}}
+                    {{--<li><a href="javascript:void(0)">#17 Hard Copy Requests</a></li>--}}
+                    {{--<li><a href="javascript:void(0)">Delivery Challan</a></li>--}}
+                    {{--<li><a href="javascript:void(0)">Purchase Order</a></li>--}}
+                    {{--<li><a href="javascript:void(0)" style="background-color: #efeeee;">View All</a></li>--}}
+                  {{--</ul>--}}
+                {{--</div>--}}
                 <a class="welcome">Welcome</a> </div>
               <!--right links--> 
             </div>
@@ -179,7 +179,7 @@
 
             index_so = $('#so_number').val().lastIndexOf("| ");
             so_number_temp = $('#so_number').val().substring(index_so+2);
-            var so_number = (so_number_temp.toUpperCase()).replace("+","").trim();
+             so_number = (so_number_temp.toUpperCase()).replace("+","").trim();
 
 
 

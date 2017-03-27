@@ -55,9 +55,9 @@ return [
         'mysql' => [
             'driver'    => 'mysql',
             'host'      => env('DB_HOST', 'localhost'),
-            'database'  => env('DB_DATABASE', 'notification'),
-            'username'  => env('DB_USERNAME', 'root'),
-            'password'  => env('DB_PASSWORD', 'toor'),
+            'database'  => env('DB_DATABASE', 'ofsTracking'),
+            'username'  => env('DB_USERNAME', 'akshay'),
+            'password'  => env('DB_PASSWORD', '12345678'),
             'charset'   => 'utf8',
             'collation' => 'utf8_unicode_ci',
             'prefix'    => '',

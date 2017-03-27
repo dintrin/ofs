@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\dc;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 
@@ -39,7 +40,6 @@ class ts extends Controller
         $so_number =  Input::get('so_number');
         $result = array();
         $dcs = \App\dc::where('so_number', '=', $so_number)->get();
-
         $ii = 0;
         foreach ( $dcs as $dc)
         {
@@ -75,16 +75,14 @@ class ts extends Controller
     {
         $dc_number = Input::get('dc_number');
         $new_status = Input::get('updated_status');
+//        dd($dc_number.$new_status);
 
-
-        $dc = \App\dc::where('dc_number', '=', $dc_number)->get();
+        $dc = \App\dc::where('dc_number', '=', $dc_number)->pluck('dc_status');
 
         if(!is_null($dc)) {
 
-
-            if ($new_status > $dc->dc_status) {
-                $dc->dc_status = $new_status;
-                $dc->save();
+            if ($new_status > $dc['0']) {
+                dc::where('dc_number','=',$dc_number)->update(['dc_status'=>$new_status]);
                 return 1;
             }
         }
