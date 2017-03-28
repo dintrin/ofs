@@ -19,9 +19,13 @@
 
         <tr>
             <td class="dc_number">{{ $dc['dc_number'] }}</td>
-            <td>{{ $dc['created_at'] }}</td>
+            <td>{{ date_format($dc['created_at'],'d-m-y H:i:s') }}</td>
+            @if($dc['dc_status']=="cannot determine")
             <td>{{ $dc['dc_status'] }}</td>
-            <td class="selectRow">
+            @else
+                <td>{{ $dc['dc_status'] }}-{{date_format($dc['created_at'],'d-m-y')}}</td>
+            @endif
+                <td class="selectRow">
                 <div class="form-group selectDiv">
                     @if(count($dc['possible_statuses'])==0)
                         Delivered
@@ -40,7 +44,9 @@
                 </div>
 
             </td>
-            <td><button type="button" class="btn btn-default btn-sm update_status" value="1">
+            <td class="button">
+                <div class="loader" style="display: none"><center><img src="/images/ajax-loader.gif" height="20%" width="20%"> <br> Loading... </center></div>
+                <button type="button" class="btn btn-default btn-sm update_status" value="1">
                     <span class="glyphicon glyphicon-floppy-save" value="test"></span> Update status</button></td>
         </tr>
 
@@ -64,21 +70,33 @@
     $('.update_status').click(function () {
 
         var $row = $(this).closest("tr");
+        $row.find(".button").find(".loader").show();
+        $row.find(".button").find(".update_status").hide();
         var dc_number= $row.find(".dc_number").text();
         var updated_status=$row.find(".selectRow").find(".selectDiv").find(".status").val();
         console.log("dc_number:"+dc_number+".....updatedStatus:"+updated_status);
         data={"dc_number":dc_number,"updated_status":updated_status};
-        $.post('ts/update',data,function (response) {
-            console.log(response);
-            if(response==1){
-                alert("Dc status updated successfully");
-                $.post("ts/soSelected", {so_number: so_number}, function (result) {
-                    $("#ts_pane").html(result);
-                });
+        $.post('ts/update',data,function (response,status,xhr) {
+            console.log(xhr.status);
+            if(xhr.status==200){
+                if(response==1){
+                    alert("Dc status updated successfully");
+                    $.post("ts/soSelected", {so_number: so_number}, function (result) {
+                        $("#ts_pane").html(result);
+                    });
+                }
+                else{
+                    $row.find(".button").find(".loader").hide();
+                    $row.find(".button").find(".update_status").show();
+                    alert("Status cannot be updated");
+                }
             }
             else{
-                alert("updated status must be higher");
+                $row.find(".button").find(".loader").hide();
+                $row.find(".button").find(".update_status").show();
+                alert("Please refresh the page");
             }
+
         })
     });
 

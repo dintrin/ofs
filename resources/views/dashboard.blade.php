@@ -62,18 +62,18 @@
                   </ul>
                 </div>
                 <a class="btn" href="javascript:void(0)"> <span>REPORTS</span></a>
-                {{--<div  class="dropdown"> <span id="counter" class="counter"><?php echo Notification::where('uid_target','=',$username)->where('status','=','un_read')->count() ?></span> <a class="notifications dropdown-toggle"  data-toggle="dropdown">Notifications</a>--}}
+                <div  class="dropdown"> <span id="counter" class="counter"><?php echo Notification::where('uid_target','=',$username)->where('status','=','un_read')->count() ?></span> <a class="notifications dropdown-toggle"  data-toggle="dropdown">Notifications</a>
 
-                  {{--<ul class="dropdown-menu customDropdownMenu list">--}}
-                    {{--<ul class="list"></ul>--}}
-                    {{--<ul class="pagination"></ul>--}}
+                  <ul class="dropdown-menu customDropdownMenu list">
+                    <ul class="list"></ul>
+                    <ul class="pagination"></ul>
 
-                    {{--<li><a href="javascript:void(0)">#17 Hard Copy Requests</a></li>--}}
-                    {{--<li><a href="javascript:void(0)">Delivery Challan</a></li>--}}
-                    {{--<li><a href="javascript:void(0)">Purchase Order</a></li>--}}
-                    {{--<li><a href="javascript:void(0)" style="background-color: #efeeee;">View All</a></li>--}}
-                  {{--</ul>--}}
-                {{--</div>--}}
+                    <li><a href="javascript:void(0)">#17 Hard Copy Requests</a></li>
+                    <li><a href="javascript:void(0)">Delivery Challan</a></li>
+                    <li><a href="javascript:void(0)">Purchase Order</a></li>
+                    <li><a href="javascript:void(0)" style="background-color: #efeeee;">View All</a></li>
+                  </ul>
+                </div>
                 <a class="welcome dropdown" title="LogOut" href="./logout"> <?php echo Auth::user()->name; ?></a>
                 <ul class="dropdown-menu customDropdownMenu list">
 

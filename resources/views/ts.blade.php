@@ -186,7 +186,7 @@
 
             $.post("/so/checkExistence", {so_number: so_number}, function (result) {
                 if (result == 1) {
-
+                    $('#ts_pane').html('<center><img src="images/ajax-loader.gif" height="20%" width="20%"> <br> Loading DC status ... </center>');
                     $.post("ts/soSelected", {so_number: so_number}, function (result) {
                         $("#ts_pane").html(result);
 
